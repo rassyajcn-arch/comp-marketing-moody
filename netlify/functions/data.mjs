@@ -48,7 +48,7 @@ export default async (req) => {
       const items = (Array.isArray(body.items) ? body.items : [])
         .filter((i) => i && i.name)
         .slice(0, 500)
-        .map((i) => ({ name: String(i.name).slice(0, 120), price: Number(i.price) || 0, cat: String(i.cat || "Lainnya").slice(0, 40) }));
+        .map((i) => ({ name: String(i.name).slice(0, 120), price: Number(i.price) || 0, hpp: Number(i.hpp) || 0, cat: String(i.cat || "Lainnya").slice(0, 40) }));
       await store.setJSON("katalog", items);
     } else {
       return json({ ok: false, error: "aksi tidak dikenal" }, 400);
