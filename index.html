@@ -66,7 +66,7 @@ textarea{resize:vertical;min-height:72px}
 .btn.sm{padding:6px 14px;font-size:13.5px;min-height:38px}
 
 /* recap */
-.recap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.6fr);background:var(--recap);color:#fff;border-radius:20px;overflow:hidden}
+.recap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.5fr);background:var(--recap);color:#fff;border-radius:20px;overflow:hidden}
 .stat{padding:18px 20px;border-right:1px solid rgba(255,255,255,.18);min-width:0}
 .stat b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(22px,3.4vw,34px);line-height:1.1;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .stat span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
@@ -76,7 +76,7 @@ textarea{resize:vertical;min-height:72px}
 .mix .bar i{display:block;height:100%;background:#fff;border-radius:99px}
 .mix .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
 .mix .cap{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-@media (max-width:900px){.recap{grid-template-columns:repeat(3,minmax(0,1fr))}.mix{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.18)}}
+@media (max-width:900px){.recap{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(2n){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.18)}.mix{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.18)}}
 
 /* main grid */
 .main{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:22px;align-items:start}
@@ -96,13 +96,20 @@ textarea{resize:vertical;min-height:72px}
 .itemrow{display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:8px;padding:12px;border-radius:12px;background:var(--bg);border:1.5px solid var(--line)}
 .itemrow .isel,.itemrow .icustom{grid-column:1}
 .itemrow .x{grid-column:2;grid-row:1}
-.itemrow .nums{grid-column:1/-1;display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:8px;align-items:end}
+.itemrow .nums{grid-column:1/-1;display:grid;grid-template-columns:68px minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:end}
 .itemrow .nums label{display:grid;gap:4px;min-width:0}
 .itemrow .nums .lbl{font-size:10.5px}
-.itemrow .line{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;padding-bottom:11px;min-width:84px;text-align:right}
+.itemrow .line{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.itemrow .line b{color:var(--ink)}
+.hpp-in{background:var(--amber-tint)!important;border-color:transparent!important}
 .x{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:22px;line-height:1;border-radius:10px;min-height:44px;width:44px}
 .x:hover{background:var(--danger-tint);color:var(--danger)}
-.subtotal{display:flex;justify-content:space-between;font-weight:800;font-size:16px;padding-top:10px;border-top:1.5px dashed var(--line);font-variant-numeric:tabular-nums}
+.subtotal{display:grid;gap:4px;padding-top:10px;border-top:1.5px dashed var(--line);font-variant-numeric:tabular-nums}
+.subtotal div{display:flex;justify-content:space-between;gap:8px}
+.subtotal .big{font-weight:800;font-size:16px}
+.subtotal .muted{font-size:13.5px;color:var(--muted)}
+.vals{display:grid;justify-items:end;gap:0;text-align:right}
+.vals small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .form-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .msg{font-size:13.5px;color:var(--danger);min-height:1em}
 
@@ -142,9 +149,11 @@ details.katalog summary{cursor:pointer;font-weight:700;color:var(--green-deep);f
 .kat-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .kat-tools input{flex:1 1 160px}
 .kat-list{display:grid;gap:8px;margin-top:10px;max-height:460px;overflow:auto;padding-right:2px}
-.kat-row{display:grid;grid-template-columns:minmax(0,1fr) 92px 44px;grid-template-areas:"n p x" "c c x";gap:6px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-.kat-row .kn{grid-area:n}.kat-row .kp{grid-area:p}.kat-row .kc{grid-area:c;min-height:38px;padding-block:6px;font-size:13px}.kat-row .x{grid-area:x}
+.kat-row{display:grid;grid-template-columns:minmax(0,1fr) 84px 84px 44px;grid-template-areas:"n p h x" "c c c x";gap:6px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.kat-row .kn{grid-area:n}.kat-row .kp{grid-area:p}.kat-row .kh{grid-area:h}.kat-row .kc{grid-area:c;min-height:38px;padding-block:6px;font-size:13px}.kat-row .x{grid-area:x}
 .hint{font-size:12.5px;color:var(--muted);margin:0}
+.kat-head{display:grid;grid-template-columns:minmax(0,1fr) 84px 84px 44px;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+@media (max-width:420px){.kat-row,.kat-head{grid-template-columns:minmax(0,1fr) 72px 72px 40px}}
 
 /* bottom tabs — phone only */
 .tabbar{display:none}
@@ -168,7 +177,7 @@ details.katalog summary{cursor:pointer;font-weight:700;color:var(--green-deep);f
   .brand p{font-size:12.5px}
   .period{width:100%}
   .period select{flex:1}
-  .recap{grid-template-columns:repeat(3,minmax(0,1fr));border-radius:16px}
+  .recap{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:16px}
   .stat{padding:12px 12px}
   .stat span{font-size:10px;letter-spacing:.05em}
   .stat b{font-size:19px}
@@ -177,6 +186,8 @@ details.katalog summary{cursor:pointer;font-weight:700;color:var(--green-deep);f
   .two{grid-template-columns:1fr 1fr;gap:10px}
   .entry{padding:12px 14px}
   .entry-top{flex-direction:column;gap:6px}
+  .entry-top .vals{justify-items:start;text-align:left;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+  .sync{flex-basis:100%}
 }
 @media (max-width:360px){.two{grid-template-columns:1fr}.recap{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.18)}}
 @media (prefers-reduced-motion:no-preference){.entry{transition:border-color .15s}.entry:hover{border-color:var(--green-line)}}
@@ -212,6 +223,7 @@ details.katalog summary{cursor:pointer;font-weight:700;color:var(--green-deep);f
     <div class="stat"><span>Pemberian</span><b id="sCount">0</b></div>
     <div class="stat"><span>Item / cup</span><b id="sQty">0</b></div>
     <div class="stat"><span>Nilai jual</span><b id="sVal">Rp0</b></div>
+    <div class="stat"><span>Biaya HPP</span><b id="sHpp">Rp0</b></div>
     <div class="mix" id="mix"></div>
   </section>
 
@@ -247,7 +259,7 @@ details.katalog summary{cursor:pointer;font-weight:700;color:var(--green-deep);f
       <div class="field"><span>Item yang diberikan</span>
         <div class="items" id="items"></div>
         <div><button class="btn sm" type="button" id="addItem">+ Tambah item</button></div>
-        <div class="subtotal"><span>Subtotal nilai</span><span id="subtotal">Rp0</span></div>
+        <div class="subtotal"><div class="big"><span>Biaya HPP</span><span id="subHpp">Rp0</span></div><div class="muted"><span>Nilai harga jual</span><span id="subtotal">Rp0</span></div></div>
       </div>
 
       <label class="field"><span>Catatan / bukti (link post, dll.)</span>
@@ -263,9 +275,10 @@ details.katalog summary{cursor:pointer;font-weight:700;color:var(--green-deep);f
           <input id="katQ" type="search" placeholder="Cari menu…" aria-label="Cari menu di katalog">
           <button class="btn sm" type="button" id="katAdd">+ Menu</button>
         </div>
+        <div class="kat-head"><div>Menu</div><div>Jual</div><div>HPP</div><div></div></div>
         <div class="kat-list" id="katList"></div>
         <div class="form-actions"><button class="btn sm primary" type="button" id="katSave">Simpan katalog</button></div>
-        <p class="hint">Sumber: Menu Moody Space 2026. Menu dengan dua harga (mis. 22/23) dipisah jadi Hot dan Iced.</p>
+        <p class="hint">Harga jual: Menu Moody Space 2026. HPP: tabel HPP Mei–Juni 2026. Menu dengan dua harga dipisah jadi Hot dan Iced.</p>
       </details>
     </form>
 
@@ -310,10 +323,18 @@ const MENU_SRC={
   "Meals":"French Fries 23|Sistagor 28|Piscok 25|Cireng Rujak 23|Dimsum 25|Wonton Chili Oil 26|Dimsum Goreng 26|Tahu Baso 25|Nasi Goreng Daun Jeruk 27|Kari Magelangan 26|Nasi Katsu Kari 28|Nasi Garlic Butter Chicken 29|Mie Chili Oil 25|Mie Goreng/Rebus 15",
   "Additional":"Add Espresso 5|Add Cheese Cream 5|Add Chili Oil 3|Add Telur Dadar/Rebus 5"
 };
-const DEFAULT_KATALOG=Object.entries(MENU_SRC).flatMap(([cat,s])=>s.split("|").flatMap(x=>{
+/* HPP per menu — sumber: HPP & Harga Jual Moody Space, Mei–Juni 2026 */
+const HPP_SRC={"Americano (Hot)":5741,"Americano (Iced)":6484,"Perfect Storm":10639,"Sunset Yuzu":8859,"Berry Honey":7433,"Moody Lifter":9144,"Latte (Hot)":9502,"Latte (Iced)":8747,"Magic (Hot)":11046,"Magic (Iced)":10882,"Kopi Keju":8840,"Tiramisu Cloud":9480,"Kopi Susu Rum":8993,"Butterscotch Sea Salt":10936,"Caramela":10081,
+"Tiramisu Regal":9485,"Strawberry Milk":9037,"Peach Yakult":11033,"Lychee Yakult":11033,"Chocolate (Hot)":7480,"Chocolate (Iced)":8138,"Choco Cheese":9962,"Choco Berry":11040,"Red Velvet (Hot)":7480,"Red Velvet (Iced)":8096,"Red Velvet Cheese":9920,
+"Tea (Hot)":661,"Tea (Iced)":2769,"Lemon Tea (Hot)":2882,"Lemon Tea (Iced)":3725,"Lychee Tea (Hot)":6692,"Lychee Tea (Iced)":7109,"Peach Tea (Hot)":6940,"Peach Tea (Iced)":7151,"Strawberry Tea":7151,
+"French Fries":7590,"Sistagor":11990,"Piscok":10010,"Cireng Rujak":10010,"Dimsum":11220,"Wonton Chili Oil":12100,"Dimsum Goreng":13420,"Tahu Baso":11550,"Nasi Goreng Daun Jeruk":12430,"Kari Magelangan":12799};
+const DEFAULT_KATALOG_BASE=Object.entries(MENU_SRC).flatMap(([cat,s])=>s.split("|").flatMap(x=>{
   const m=x.match(/^(.*) (\d+)(?:\/(\d+))?$/);
   return m[3]?[{name:m[1]+" (Hot)",price:+m[2]*1000,cat},{name:m[1]+" (Iced)",price:+m[3]*1000,cat}]:[{name:m[1],price:+m[2]*1000,cat}];
 }));
+const DEFAULT_KATALOG=DEFAULT_KATALOG_BASE.map(k=>({...k,hpp:HPP_SRC[k.name]||0}));
+/* katalog lama yang belum punya HPP diisi dari tabel HPP */
+const withHpp=list=>list.map(k=>({...k,hpp:(k.hpp!=null&&k.hpp!=="")?Number(k.hpp)||0:(HPP_SRC[k.name]||0)}));
 
 const $=s=>document.querySelector(s);
 const rp=n=>"Rp"+Math.round(n||0).toLocaleString("id-ID");
@@ -430,13 +451,14 @@ function addItemRow(it={name:"",qty:"",price:""}){
     <input class="icustom" id="icus-${n}" aria-label="Nama item lain" placeholder="Nama item (mis. Merch tote bag)" value="${inKat?"":esc(it.name)}" ${sel===CUSTOM?"":"hidden"}>
     <div class="nums">
       <label><span class="lbl">Qty</span><input class="iqty" id="iqty-${n}" type="number" min="1" step="1" inputmode="numeric" placeholder="0" value="${esc(it.qty)}"></label>
-      <label><span class="lbl">Harga / unit</span><input class="iprice" id="ipr-${n}" type="number" min="0" step="500" inputmode="numeric" placeholder="0" value="${esc(it.price)}"></label>
-      <span class="line">Rp0</span>
+      <label><span class="lbl">Harga jual</span><input class="iprice" id="ipr-${n}" type="number" min="0" step="500" inputmode="numeric" placeholder="0" value="${esc(it.price)}"></label>
+      <label><span class="lbl">HPP / unit</span><input class="ihpp hpp-in" id="ihpp-${n}" type="number" min="0" step="1" inputmode="numeric" placeholder="0" value="${esc(it.hpp??"")}"></label>
+      <div class="line"><span>Jual <b class="lj">Rp0</b></span><span>HPP <b class="lh">Rp0</b></span></div>
     </div>`;
-  const s=row.querySelector(".isel"),c=row.querySelector(".icustom"),p=row.querySelector(".iprice"),q=row.querySelector(".iqty");
+  const s=row.querySelector(".isel"),c=row.querySelector(".icustom"),p=row.querySelector(".iprice"),q=row.querySelector(".iqty"),h=row.querySelector(".ihpp");
   s.addEventListener("change",()=>{
-    if(s.value===CUSTOM){c.hidden=false;p.value="";c.focus()}
-    else{c.hidden=true;const k=katalog.find(k=>k.name===s.value);p.value=k?k.price:"";if(s.value)q.focus()}
+    if(s.value===CUSTOM){c.hidden=false;p.value="";h.value="";c.focus()}
+    else{c.hidden=true;const k=katalog.find(k=>k.name===s.value);p.value=k?k.price:"";h.value=k&&k.hpp?k.hpp:"";if(s.value)q.focus()}
     calc();
   });
   row.querySelector(".x").onclick=()=>{row.remove();if(!$("#items").children.length)addItemRow();calc()};
@@ -447,12 +469,14 @@ function addItemRow(it={name:"",qty:"",price:""}){
 function rowData(r){
   const s=r.querySelector(".isel").value;
   const name=s===CUSTOM?r.querySelector(".icustom").value.trim():s;
-  return{name,qty:Math.max(0,parseInt(r.querySelector(".iqty").value)||0),price:Math.max(0,parseFloat(r.querySelector(".iprice").value)||0)};
+  return{name,qty:Math.max(0,parseInt(r.querySelector(".iqty").value)||0),price:Math.max(0,parseFloat(r.querySelector(".iprice").value)||0),hpp:Math.max(0,parseFloat(r.querySelector(".ihpp").value)||0)};
 }
 function readItems(){return [...document.querySelectorAll(".itemrow")].map(rowData).filter(i=>i.name&&i.qty>0)}
 function calc(){
-  document.querySelectorAll(".itemrow").forEach(r=>{const d=rowData(r);r.querySelector(".line").textContent=rp(d.qty*d.price)});
-  $("#subtotal").textContent=rp(readItems().reduce((a,i)=>a+i.qty*i.price,0));
+  document.querySelectorAll(".itemrow").forEach(r=>{const d=rowData(r);r.querySelector(".lj").textContent=rp(d.qty*d.price);r.querySelector(".lh").textContent=rp(d.qty*d.hpp)});
+  const its=readItems();
+  $("#subtotal").textContent=rp(its.reduce((a,i)=>a+i.qty*i.price,0));
+  $("#subHpp").textContent=rp(its.reduce((a,i)=>a+i.qty*i.hpp,0));
 }
 function refreshItemSelects(){
   document.querySelectorAll(".itemrow").forEach(r=>{
@@ -469,10 +493,11 @@ function renderKatEditor(){
   katalog.forEach(k=>addKatRow(k));
   filterKat();
 }
-function addKatRow(k={name:"",price:"",cat:"Lainnya"},top){
+function addKatRow(k={name:"",price:"",hpp:"",cat:"Lainnya"},top){
   const r=document.createElement("div");r.className="kat-row";
   r.innerHTML=`<input aria-label="Nama menu" class="kn" value="${esc(k.name)}" placeholder="Nama menu">
-  <input aria-label="Harga" class="kp" type="number" min="0" step="500" inputmode="numeric" value="${esc(k.price)}" placeholder="Harga">
+  <input aria-label="Harga jual" class="kp" type="number" min="0" step="500" inputmode="numeric" value="${esc(k.price)}" placeholder="Jual">
+  <input aria-label="HPP" class="kh hpp-in" type="number" min="0" step="1" inputmode="numeric" value="${esc(k.hpp||"")}" placeholder="HPP">
   <select aria-label="Kategori" class="kc">${CATS.map(c=>`<option ${c===(k.cat||"Lainnya")?"selected":""}>${c}</option>`).join("")}</select>
   <button type="button" class="x" aria-label="Hapus menu">×</button>`;
   r.querySelector(".x").onclick=()=>r.remove();
@@ -486,7 +511,7 @@ function filterKat(){
 $("#katQ").addEventListener("input",filterKat);
 $("#katAdd").onclick=()=>{$("#katQ").value="";filterKat();addKatRow(undefined,true).querySelector(".kn").focus()};
 $("#katSave").onclick=async()=>{
-  const items=[...document.querySelectorAll(".kat-row")].map(r=>({name:r.querySelector(".kn").value.trim(),price:Math.max(0,parseFloat(r.querySelector(".kp").value)||0),cat:r.querySelector(".kc").value})).filter(i=>i.name);
+  const items=[...document.querySelectorAll(".kat-row")].map(r=>({name:r.querySelector(".kn").value.trim(),price:Math.max(0,parseFloat(r.querySelector(".kp").value)||0),hpp:Math.max(0,parseFloat(r.querySelector(".kh").value)||0),cat:r.querySelector(".kc").value})).filter(i=>i.name);
   try{await store.saveKatalog(items);toast("Katalog disimpan")}catch(e){showErr(e)}
 };
 
@@ -527,6 +552,7 @@ $("#form").addEventListener("submit",async ev=>{
     items,
     notes:$("#notes").value.trim(),
     total:items.reduce((a,i)=>a+i.qty*i.price,0),
+    totalHpp:items.reduce((a,i)=>a+i.qty*(i.hpp||0),0),
     createdAt:prev?.createdAt||new Date().toISOString(),
     updatedAt:new Date().toISOString()
   };
@@ -552,6 +578,7 @@ function monthOptions(){
   sel.innerHTML=`<option value="all">Semua waktu</option>`+ms.map(m=>{const [y,mm]=m.split("-");return `<option value="${m}">${MONTHS[+mm-1]} ${y}</option>`}).join("");
   sel.value=cur&&[...sel.options].some(o=>o.value===cur)?cur:today().slice(0,7);
 }
+function entryHpp(e){return e.totalHpp!=null?Number(e.totalHpp)||0:(e.items||[]).reduce((a,i)=>a+(i.qty||0)*(i.hpp||0),0)}
 function inPeriod(e){const m=$("#month").value;return m==="all"||(e.date||"").startsWith(m)}
 function render(){
   monthOptions();
@@ -561,10 +588,12 @@ function render(){
   $("#sCount").textContent=period.length.toLocaleString("id-ID");
   $("#sQty").textContent=qty.toLocaleString("id-ID");
   $("#sVal").textContent=rp(val);
+  $("#sHpp").textContent=rp(period.reduce((a,e)=>a+entryHpp(e),0));
   $("#tabCount").textContent=`${period.length} catatan`;
-  const byKind=KINDS.map(k=>({...k,v:period.filter(e=>e.kind===k.id).reduce((a,e)=>a+(e.total||0),0)})).filter(k=>k.v>0);
+  const hppAll=period.reduce((a,e)=>a+entryHpp(e),0);
+  const byKind=KINDS.map(k=>({...k,v:period.filter(e=>e.kind===k.id).reduce((a,e)=>a+entryHpp(e),0)})).filter(k=>k.v>0);
   const max=Math.max(1,...byKind.map(k=>k.v));
-  $("#mix").innerHTML=byKind.length?`<span class="cap">Nilai per jenis</span>`+byKind.map(k=>`<div class="row"><span>${k.label}</span><div class="bar"><i style="width:${(k.v/max*100).toFixed(1)}%"></i></div><span class="num">${val?Math.round(k.v/val*100):0}%</span></div>`).join(""):`<span style="opacity:.85;font-size:14px">Belum ada pemberian di periode ini.</span>`;
+  $("#mix").innerHTML=byKind.length?`<span class="cap">Biaya HPP per jenis</span>`+byKind.map(k=>`<div class="row"><span>${k.label}</span><div class="bar"><i style="width:${(k.v/max*100).toFixed(1)}%"></i></div><span class="num">${hppAll?Math.round(k.v/hppAll*100):0}%</span></div>`).join(""):`<span style="opacity:.85;font-size:14px">Belum ada pemberian di periode ini.</span>`;
 
   const q=$("#q").value.trim().toLowerCase();const fk=$("#fKind").value;
   const list=period.filter(e=>(!fk||e.kind===fk)&&(!q||[e.recipient,e.pic,e.notes,e.purpose,...(e.items||[]).map(i=>i.name)].join(" ").toLowerCase().includes(q)))
@@ -583,7 +612,7 @@ function render(){
           <h3>${esc(e.recipient)}</h3>
           <div class="meta"><span class="tag ${esc(e.kind)}">${esc(kindLabel(e.kind))}</span><span>${fmtDate(e.date)}</span>${e.pic?`<span>PIC: ${esc(e.pic)}</span>`:""}<span>${esc(e.purpose||"")}</span></div>
         </div>
-        <span class="val">${rp(e.total)}</span>
+        <span class="vals"><span class="val">HPP ${rp(entryHpp(e))}</span><small>Jual ${rp(e.total)}</small></span>
       </div>
       <ul>${(e.items||[]).map(i=>`<li><b>${i.qty}×</b> ${esc(i.name)}</li>`).join("")}</ul>
       ${e.notes?`<p class="note">${linkify(e.notes)}</p>`:""}
@@ -602,8 +631,8 @@ $("#log").addEventListener("click",async ev=>{
 ["#q","#fKind","#month"].forEach(s=>$(s).addEventListener("input",render));
 
 $("#copyCsv").onclick=async()=>{
-  const rows=[["Tanggal","Jenis","Penerima","PIC","Tujuan","Item","Qty","Harga/unit","Nilai","Catatan"]];
-  entries.filter(inPeriod).sort((a,b)=>(a.date||"").localeCompare(b.date||"")).forEach(e=>(e.items||[]).forEach(i=>rows.push([e.date,kindLabel(e.kind),e.recipient,e.pic,e.purpose,i.name,i.qty,i.price,i.qty*i.price,e.notes])));
+  const rows=[["Tanggal","Jenis","Penerima","PIC","Tujuan","Item","Qty","Harga jual/unit","Nilai jual","HPP/unit","Total HPP","Catatan"]];
+  entries.filter(inPeriod).sort((a,b)=>(a.date||"").localeCompare(b.date||"")).forEach(e=>(e.items||[]).forEach(i=>rows.push([e.date,kindLabel(e.kind),e.recipient,e.pic,e.purpose,i.name,i.qty,i.price,i.qty*i.price,i.hpp||0,i.qty*(i.hpp||0),e.notes])));
   const csv=rows.map(r=>r.map(c=>{const s=String(c??"");return /[",\n]/.test(s)?`"${s.replace(/"/g,'""')}"`:s}).join(",")).join("\n");
   try{await navigator.clipboard.writeText(csv);toast(`${rows.length-1} baris disalin, tempel ke Excel/Sheets`)}
   catch(e){toast("Browser menolak menyalin. Coba dari browser lain.")}
@@ -618,7 +647,7 @@ function attach(s){
   store=s;
   store.subscribe(
     list=>{const j=JSON.stringify(list);if(j===lastE)return;lastE=j;entries=list;render()},
-    k=>{const next=(k&&k.length)?k:DEFAULT_KATALOG.slice();const j=JSON.stringify(next);if(j===lastK)return;lastK=j;katalog=next;refreshItemSelects();renderKatEditor()}
+    k=>{const next=(k&&k.length)?withHpp(k):DEFAULT_KATALOG.slice();const j=JSON.stringify(next);if(j===lastK)return;lastK=j;katalog=next;refreshItemSelects();renderKatEditor()}
   );
 }
 async function apiAvailable(url){
